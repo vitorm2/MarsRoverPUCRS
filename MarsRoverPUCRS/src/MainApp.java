@@ -33,7 +33,7 @@ public class MainApp {
             System.out.print("\n========= Configurando Rover =========\n\n");
             System.out.print("Digite a posicao inicial do Rover: ");
 
-            p = in2.nextLine().toLowerCase();
+            p = in2.nextLine();
 
             Rover r1 = new Rover(verificaPosicaoInicial(p));
             listaRovers.add(r1);
@@ -41,7 +41,7 @@ public class MainApp {
             String c = "";
 
             System.out.print("Digite os comandos para movimentar o Rover: ");
-            c = in2.nextLine().toLowerCase();
+            c = in2.nextLine();
 
             r1.movimentaRover(c);
 
@@ -81,7 +81,7 @@ public class MainApp {
 
     }
 
-    public static String verificaPosicaoInicial(String p) {
+    public static String verificaPosicaoInicial(String p) throws Exception {
 
         String t = "";
         String x1 = "";
@@ -89,28 +89,31 @@ public class MainApp {
         String y1 = "";
         String d1 = "";
 
+        try {
+            for (int i = 0; i < p.length(); i++) {
+                t = "" + p.charAt(i);
+                if (t.contentEquals(" ")) {
+                    for (int j = i + 1; j < p.length(); j++) {
+                        t = "" + p.charAt(j);
+                        if (t.contentEquals(" ")) {
+                            for (int k = j + 1; k < p.length(); k++) {
+                                d1 = d1 + p.charAt(k);
 
-        for (int i = 0; i < p.length(); i++) {
-            t = "" + p.charAt(i);
-            if (t.contentEquals(" ")) {
-                for (int j = i + 1; j < p.length(); j++) {
-                    t = "" + p.charAt(j);
-                    if (t.contentEquals(" ")) {
-                        for (int k = j + 1; k < p.length(); k++) {
-                            d1 = d1 + p.charAt(k);
-
+                            }
+                            break;
                         }
-                        break;
+
+                        y1 = y1 + p.charAt(j);
+
                     }
-
-                    y1 = y1 + p.charAt(j);
-
+                    break;
                 }
-                break;
+                x1 = x1 + p.charAt(i);
             }
-            x1 = x1 + p.charAt(i);
-        }
 
+        } catch (Exception e) {
+            throw new Exception("Posição inicial inválida.");
+        }
         return x1 + y1 + d1;
 
     }
@@ -122,7 +125,7 @@ public class MainApp {
         String y = "";
         String t = "";
         try {
-            if (Integer.parseInt(gradeInformada.replaceAll(" ","")) > 0) {
+            if (Integer.parseInt(gradeInformada.replaceAll(" ", "")) > 0) {
                 for (int i = 0; i < gradeInformada.length(); i++) {
                     t = "" + gradeInformada.charAt(i);
                     if (t.contentEquals(" ")) {
@@ -137,7 +140,7 @@ public class MainApp {
                 }
             }
 
-        }catch (Exception e ){
+        } catch (Exception e) {
             throw new Exception("Formato da grade incorreta. As dimensões da grade só podem ser constituídas de números.");
         }
         return t;
