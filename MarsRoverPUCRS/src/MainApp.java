@@ -13,6 +13,7 @@ public class MainApp {
 		boolean aux_menu2 = true;
 		
 		Scanner in = new Scanner(System.in);
+		Scanner in2 = new Scanner(System.in);
 
 		String gradeInformada = "";
 
@@ -31,7 +32,7 @@ public class MainApp {
 			System.out.print("\n========= Configurando Rover =========\n\n");
 			System.out.print("Digite a posicao inicial do Rover: ");
 	
-			p = in.nextLine();
+			p = in2.nextLine();
 
 			Rover r1 = new Rover(verificaPosicaoInicial(p));
 			listaRovers.add(r1);
@@ -39,7 +40,7 @@ public class MainApp {
 			String c = "";
 			
 			System.out.print("Digite os comandos para movimentar o Rover: ");
-			c = in.nextLine();
+			c = in2.nextLine();
 	
 			r1.movimentaRover(c);
 			
