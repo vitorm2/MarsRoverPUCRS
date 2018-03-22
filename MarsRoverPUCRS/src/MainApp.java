@@ -33,7 +33,7 @@ public class MainApp {
             System.out.print("\n========= Configurando Rover =========\n\n");
             System.out.print("Digite a posicao inicial do Rover: ");
 
-            p = in2.nextLine();
+            p = in2.nextLine().toLowerCase();
 
             Rover r1 = new Rover(verificaPosicaoInicial(p));
             listaRovers.add(r1);
@@ -41,7 +41,7 @@ public class MainApp {
             String c = "";
 
             System.out.print("Digite os comandos para movimentar o Rover: ");
-            c = in2.nextLine();
+            c = in2.nextLine().toLowerCase();
 
             r1.movimentaRover(c);
 
