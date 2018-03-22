@@ -33,15 +33,41 @@ public class MainApp {
             System.out.print("\n========= Configurando Rover =========\n\n");
             System.out.print("Digite a posicao inicial do Rover: ");
 
-            p = in2.nextLine();
+            p = in2.nextLine().toLowerCase();
 
-            Rover r1 = new Rover(verificaPosicaoInicial(p));
+            String t = "";
+            String x1 = "";
+            String y1 = "";
+            String d1 = "";
+
+            for (int i = 0; i < p.length(); i++) {
+                t = "" + p.charAt(i);
+                if (t.contentEquals(" ")) {
+                    for (int j = i + 1; j < p.length(); j++) {
+                        t = "" + p.charAt(j);
+                        if (t.contentEquals(" ")) {
+                            for (int k = j + 1; k < p.length(); k++) {
+                                d1 = d1 + p.charAt(k);
+
+                            }
+                            break;
+                        }
+
+                        y1 = y1 + p.charAt(j);
+
+                    }
+                    break;
+                }
+                x1 = x1 + p.charAt(i);
+            }
+
+            Rover r1 = new Rover(x1, y1, d1);
             listaRovers.add(r1);
 
             String c = "";
 
             System.out.print("Digite os comandos para movimentar o Rover: ");
-            c = in2.nextLine();
+            c = in2.nextLine().toLowerCase();
 
             r1.movimentaRover(c);
 
@@ -81,42 +107,6 @@ public class MainApp {
 
     }
 
-    public static String verificaPosicaoInicial(String p) throws Exception {
-
-        String t = "";
-        String x1 = "";
-
-        String y1 = "";
-        String d1 = "";
-
-        try {
-            for (int i = 0; i < p.length(); i++) {
-                t = "" + p.charAt(i);
-                if (t.contentEquals(" ")) {
-                    for (int j = i + 1; j < p.length(); j++) {
-                        t = "" + p.charAt(j);
-                        if (t.contentEquals(" ")) {
-                            for (int k = j + 1; k < p.length(); k++) {
-                                d1 = d1 + p.charAt(k);
-
-                            }
-                            break;
-                        }
-
-                        y1 = y1 + p.charAt(j);
-
-                    }
-                    break;
-                }
-                x1 = x1 + p.charAt(i);
-            }
-
-        } catch (Exception e) {
-            throw new Exception("Posição inicial inválida.");
-        }
-        return x1 + y1 + d1;
-
-    }
 
     public static String verificaGrade(String gradeInformada) throws Exception {
 
