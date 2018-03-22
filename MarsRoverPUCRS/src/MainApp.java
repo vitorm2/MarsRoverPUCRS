@@ -34,12 +34,12 @@ public class MainApp {
             System.out.print("Digite a posicao inicial do Rover: ");
 
             p = in2.nextLine().toLowerCase();
-            
+
             String t = "";
             String x1 = "";
             String y1 = "";
             String d1 = "";
-            
+
             for (int i = 0; i < p.length(); i++) {
                 t = "" + p.charAt(i);
                 if (t.contentEquals(" ")) {
@@ -60,7 +60,7 @@ public class MainApp {
                 }
                 x1 = x1 + p.charAt(i);
             }
-            
+
             Rover r1 = new Rover(x1, y1, d1);
             listaRovers.add(r1);
 
@@ -115,7 +115,7 @@ public class MainApp {
         String y = "";
         String t = "";
         try {
-            if (Integer.parseInt(gradeInformada.replaceAll(" ","")) > 0) {
+            if (Integer.parseInt(gradeInformada.replaceAll(" ", "")) > 0) {
                 for (int i = 0; i < gradeInformada.length(); i++) {
                     t = "" + gradeInformada.charAt(i);
                     if (t.contentEquals(" ")) {
@@ -130,7 +130,7 @@ public class MainApp {
                 }
             }
 
-        }catch (Exception e ){
+        } catch (Exception e) {
             throw new Exception("Formato da grade incorreta. As dimensões da grade só podem ser constituídas de números.");
         }
         return t;
